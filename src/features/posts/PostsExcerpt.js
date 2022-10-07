@@ -1,9 +1,12 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import PostAuthor from "./PostAuthor";
+import { getPostById } from "./postsSlice";
 import ReactionButtons from "./ReactionButtons";
 import TimeAgo from "./TimeAgo";
 
-const PostsExcerpt = ({ post }) => {
+let PostsExcerpt = ({ postId }) => {
+  const post = useSelector((state) => getPostById(state, postId));
   return (
     <article>
       <h3>{post.title}</h3>
